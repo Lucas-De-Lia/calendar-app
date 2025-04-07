@@ -4,6 +4,7 @@ import { NavBar } from "../components/NavBar"
 import { addHours } from 'date-fns'
 import { localizer } from '../../helpers/calendarLocalizer'
 import { getMesssagesEs } from '../../helpers/getMessages'
+import { CalendarEvent } from '../components/CalendarEvent'
 
 const events = [{
   title:"Cumpleaños de Fernando",
@@ -20,7 +21,6 @@ const events = [{
 export const CalendarPage = () => {
 
   const eventStyleGetter = (event, start, end, isSelected) => {
-    console.log({event, start, end, isSelected});
     const style = {
       backgroundColor: '#347CF7',
       borderRadius: '0px',
@@ -44,6 +44,9 @@ export const CalendarPage = () => {
       culture='es'
       messages= { getMesssagesEs() }
       eventPropGetter={ eventStyleGetter }
+      components={{
+        event: CalendarEvent
+      }}
     />
     </>
   )
